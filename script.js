@@ -14,6 +14,12 @@ Object.keys(buttons).forEach(id => {
     config.element = button;
 
     button.addEventListener('click', () => {
+        // Track button click with Google Analytics
+        gtag('event', 'button_click', {
+            'event_category': 'Button Clicks',
+            'event_label': id
+        });
+
         // If another button is playing, stop it
         if (currentlyPlaying && currentlyPlaying.audio !== config.audio) {
             currentlyPlaying.audio.pause();
